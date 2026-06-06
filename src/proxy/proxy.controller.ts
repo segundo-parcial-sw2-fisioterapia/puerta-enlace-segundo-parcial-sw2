@@ -1,9 +1,11 @@
-import { Controller, All, Req, Res } from '@nestjs/common';
+import { Controller, All, Req, Res, UseGuards } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 import { firstValueFrom } from 'rxjs';
 import { AxiosError } from 'axios';
+import { GuardsAutenticacion } from '../guards/guard-autenticacion';
+import { GuardPermisos } from '../guards/guard-permisos';
 
 @Controller('bi-automatizacion')
 export class ProxyController {
@@ -16,11 +18,12 @@ export class ProxyController {
    * Enruta dinámicamente cualquier petición REST dirigida a /api/bi-automatizacion/*
    * hacia el microservicio correspondiente (bi-automatizacion-segundo-parcial-sw2).
    */
-  @All('*')
+  @UseGuards(GuardsAutenticacion, GuardPermisos)
+  @All('*path')
   async proxyBi(@Req() req: Request, @Res() res: Response) {
     const biUrl = this.configService.get<string>('BI_AUTOMATIZACION_URL') || 'http://localhost:8000/api';
     
-    const subRoute = req.params[0] || '';
+    const subRoute = req.params.path || '';
     const targetUrl = `${biUrl}/${subRoute}`;
 
     const headers: Record<string, string> = {
