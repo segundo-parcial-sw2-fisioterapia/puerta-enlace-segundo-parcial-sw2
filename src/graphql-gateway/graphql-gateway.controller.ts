@@ -59,13 +59,39 @@ export class GraphqlGatewayController {
 
     // Listado de operaciones que pertenecen exclusivamente al módulo administrativo
     const admOperations = [
-      'listarEmpleados', 'verEmpleado', 'crearEmpleado', 'editarEmpleado', 'eliminarEmpleado',
+      // Empleados
+      'listarEmpleados', 'verEmpleado', 'buscarEmpleados', 'crearEmpleados', 'editarEmpleado', 'eliminarEmpleado',
+      // Turnos
+      'listarTurnos', 'verTurno', 'listarTurnosPorEmpleado', 'crearTurnos', 'editarTurno', 'eliminarTurno',
+      // Asistencias
+      'listarAsistencias', 'verAsistencia', 'listarAsistenciasPorEmpleado', 'crearAsistencias', 'editarAsistencia', 'eliminarAsistencia',
+      // Insumos
+      'listarInsumos', 'verInsumo', 'listarInsumosConStockBajo', 'crearInsumos', 'editarInsumo', 'eliminarInsumo',
+      // Movimientos de Insumos
+      'listarMovimientosInsumos', 'verMovimientoInsumo', 'listarMovimientosPorInsumo', 'crearMovimientosInsumos', 'eliminarMovimientoInsumo',
+      // Documentos
+      'listarDocumentos', 'verDocumento', 'listarDocumentosPorEntidad', 'crearDocumentos', 'editarDocumento', 'eliminarDocumento', 'firmarDocumentoConBlockchain',
+      // Facturas
+      'listarFacturas', 'listarFacturasEnriquecidas', 'verFactura', 'verFacturaEnriquecida',
+      'listarFacturasPorPaciente', 'listarFacturasPorMensualidad',
+      'crearFacturas', 'editarFactura', 'anularFactura', 'eliminarFactura',
+      'registrarFacturaEnBlockchain', 'generarPdfFactura',
+      // Pagos
+      'listarPagos', 'verPago', 'listarPagosPorFactura', 'crearPagos', 'editarPago', 'eliminarPago',
+      // Tarifas
+      'listarTarifas', 'verTarifa', 'actualizarTarifa',
+      // Mensualidades
+      'listarMensualidades', 'listarMensualidadesEnriquecidas', 'verMensualidad',
+      'listarMensualidadesPorPaciente', 'listarMensualidadesPorPlan', 'listarMensualidadesPendientes',
+      'crearMensualidades', 'registrarPagoMensualidad',
+      // Empleados extra
+      'verEmpleadoPorPersonaId',
+      
+      // Legacy / Compatibilidad
       'listarSucursales', 'verSucursal', 'crearSucursal', 'editarSucursal', 'eliminarSucursal',
       'listarHorarios', 'verHorario', 'crearHorario', 'editarHorario', 'eliminarHorario',
       'listarNominas', 'verNomina', 'crearNomina', 'editarNomina', 'eliminarNomina',
-      'listarInventarios', 'verInventario', 'crearInventario', 'editarInventario', 'eliminarInventario',
-      'listarPagos', 'verPago', 'crearPago', 'editarPago', 'eliminarPago',
-      'listarFacturas', 'verFactura', 'crearFactura', 'editarFactura', 'eliminarFactura'
+      'listarInventarios', 'verInventario', 'crearInventario', 'editarInventario', 'eliminarInventario'
     ];
 
     // Si la operación raíz pertenece a administración, se enruta allá; de lo contrario va a clínica

@@ -26,18 +26,6 @@ export const PERMISOS_GRAPHQL_CLINICA: PermisoGraphql[] = [
   { operacion: 'altaMedicaPaciente', roles: ['administrador', 'fisioterapeuta'] },
   { operacion: 'eliminarPaciente', roles: ['administrador'] },
 
-  // --- Citas ---
-  { operacion: 'listarCitas', roles: ['administrador', 'recepcionista', 'fisioterapeuta', 'director'] },
-  { operacion: 'verCita', roles: ['administrador', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'listarCitasPorPaciente', roles: ['administrador', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'listarCitasPorEmpleadoYFecha', roles: ['fisioterapeuta', 'administrador'] },
-  { operacion: 'listarCitasProximas', roles: ['administrador', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'crearCitas', roles: ['administrador', 'recepcionista'] },
-  { operacion: 'editarCita', roles: ['administrador', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'confirmarCita', roles: ['administrador', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'cancelarCita', roles: ['administrador', 'recepcionista'] },
-  { operacion: 'eliminarCita', roles: ['administrador'] },
-
   // --- Ejercicios ---
   { operacion: 'listarEjercicios', roles: ['administrador', 'fisioterapeuta', 'paciente'] },
   { operacion: 'verEjercicio', roles: ['administrador', 'fisioterapeuta', 'paciente'] },
@@ -50,7 +38,7 @@ export const PERMISOS_GRAPHQL_CLINICA: PermisoGraphql[] = [
   { operacion: 'listarEvaluacionesIniciales', roles: ['administrador', 'fisioterapeuta', 'director'] },
   { operacion: 'verEvaluacionInicial', roles: ['administrador', 'fisioterapeuta'] },
   { operacion: 'listarEvaluacionesPorPaciente', roles: ['administrador', 'fisioterapeuta'] },
-  { operacion: 'crearEvaluacionesIniciales', roles: ['fisioterapeuta'] },
+  { operacion: 'crearEvaluacionesIniciales', roles: ['fisioterapeuta', 'administrador', 'director'] },
   { operacion: 'editarEvaluacionInicial', roles: ['fisioterapeuta', 'administrador'] },
   { operacion: 'eliminarEvaluacionInicial', roles: ['administrador'] },
 
@@ -71,11 +59,17 @@ export const PERMISOS_GRAPHQL_CLINICA: PermisoGraphql[] = [
   { operacion: 'eliminarPlanEjercicio', roles: ['administrador'] },
 
   // --- Sesiones Clínicas ---
-  { operacion: 'listarSesiones', roles: ['administrador', 'fisioterapeuta', 'director'] },
-  { operacion: 'verSesion', roles: ['administrador', 'fisioterapeuta'] },
+  { operacion: 'listarSesiones', roles: ['administrador', 'fisioterapeuta', 'director', 'recepcionista'] },
+  { operacion: 'verSesion', roles: ['administrador', 'fisioterapeuta', 'recepcionista'] },
+  { operacion: 'crearSesiones', roles: ['administrador', 'fisioterapeuta'] },
   { operacion: 'listarSesionesPorPaciente', roles: ['administrador', 'fisioterapeuta'] },
-  { operacion: 'crearSesiones', roles: ['fisioterapeuta'] },
+  { operacion: 'listarSesionesPorPlan', roles: ['administrador', 'fisioterapeuta'] },
+  { operacion: 'listarSesionesPorMensualidad', roles: ['administrador', 'fisioterapeuta', 'recepcionista'] },
+  { operacion: 'listarSesionesPorEmpleado', roles: ['fisioterapeuta', 'administrador', 'recepcionista'] },
   { operacion: 'editarSesion', roles: ['fisioterapeuta'] },
+  { operacion: 'asignarFisioterapeuta', roles: ['recepcionista', 'administrador'] },
+  { operacion: 'iniciarSesion', roles: ['fisioterapeuta'] },
+  { operacion: 'cerrarSesion', roles: ['fisioterapeuta'] },
   { operacion: 'cerrarYFirmarSesion', roles: ['fisioterapeuta'] },
   { operacion: 'eliminarSesion', roles: ['administrador'] },
 

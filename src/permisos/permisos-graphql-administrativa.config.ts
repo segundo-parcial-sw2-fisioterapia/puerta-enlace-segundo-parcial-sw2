@@ -1,52 +1,80 @@
 import { PermisoGraphql } from './permisos.types';
 
 export const PERMISOS_GRAPHQL_ADMINISTRATIVA: PermisoGraphql[] = [
-  // --- Empleados (RRHH) ---
-  { operacion: 'listarEmpleados', roles: ['administrador', 'director', 'contador'] },
-  { operacion: 'verEmpleado', roles: ['administrador', 'director', 'contador'] },
-  { operacion: 'crearEmpleado', roles: ['administrador'] },
-  { operacion: 'editarEmpleado', roles: ['administrador'] },
-  { operacion: 'eliminarEmpleado', roles: ['administrador'] },
 
-  // --- Sucursales ---
-  { operacion: 'listarSucursales', roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta', 'contador'] },
-  { operacion: 'verSucursal', roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta', 'contador'] },
-  { operacion: 'crearSucursal', roles: ['administrador'] },
-  { operacion: 'editarSucursal', roles: ['administrador'] },
-  { operacion: 'eliminarSucursal', roles: ['administrador'] },
+  // ─── Tarifas ─────────────────────────────────────────────────────────────────
+  { operacion: 'listarTarifas',    roles: ['administrador', 'contador', 'director', 'fisioterapeuta'] },
+  { operacion: 'verTarifa',        roles: ['administrador', 'contador', 'fisioterapeuta'] },
+  { operacion: 'actualizarTarifa', roles: ['administrador', 'fisioterapeuta'] },
 
-  // --- Horarios ---
-  { operacion: 'listarHorarios', roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'verHorario', roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'crearHorario', roles: ['administrador'] },
-  { operacion: 'editarHorario', roles: ['administrador'] },
-  { operacion: 'eliminarHorario', roles: ['administrador'] },
+  // ─── Mensualidades ───────────────────────────────────────────────────────────
+  { operacion: 'listarMensualidades',             roles: ['administrador', 'contador', 'recepcionista', 'fisioterapeuta'] },
+  { operacion: 'listarMensualidadesEnriquecidas', roles: ['administrador', 'contador', 'recepcionista'] },
+  { operacion: 'verMensualidad',                  roles: ['administrador', 'contador', 'recepcionista'] },
+  { operacion: 'listarMensualidadesPorPaciente',  roles: ['administrador', 'contador', 'recepcionista'] },
+  { operacion: 'listarMensualidadesPorPlan',      roles: ['administrador', 'contador', 'fisioterapeuta'] },
+  { operacion: 'listarMensualidadesPendientes',   roles: ['administrador', 'contador', 'recepcionista'] },
+  { operacion: 'crearMensualidades',              roles: ['administrador', 'contador', 'fisioterapeuta'] },
+  { operacion: 'registrarPagoMensualidad',        roles: ['recepcionista', 'contador', 'administrador'] },
 
-  // --- Nóminas ---
-  { operacion: 'listarNominas', roles: ['administrador', 'director', 'contador'] },
-  { operacion: 'verNomina', roles: ['administrador', 'director', 'contador'] },
-  { operacion: 'crearNomina', roles: ['administrador', 'contador'] },
-  { operacion: 'editarNomina', roles: ['administrador', 'contador'] },
-  { operacion: 'eliminarNomina', roles: ['administrador'] },
+  // ─── Facturas ────────────────────────────────────────────────────────────────
+  { operacion: 'listarFacturas',               roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'listarFacturasEnriquecidas',   roles: ['administrador', 'director', 'contador', 'recepcionista'] },
+  { operacion: 'verFactura',                   roles: ['administrador', 'director', 'contador', 'recepcionista'] },
+  { operacion: 'verFacturaEnriquecida',        roles: ['administrador', 'director', 'contador', 'recepcionista'] },
+  { operacion: 'listarFacturasPorPaciente',    roles: ['administrador', 'contador', 'recepcionista'] },
+  { operacion: 'listarFacturasPorMensualidad', roles: ['administrador', 'contador'] },
+  { operacion: 'anularFactura',                roles: ['administrador'] },
+  { operacion: 'registrarFacturaEnBlockchain', roles: ['administrador', 'contador'] },
+  { operacion: 'generarPdfFactura',            roles: ['administrador', 'director', 'contador', 'recepcionista'] },
 
-  // --- Inventarios ---
-  { operacion: 'listarInventarios', roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'verInventario', roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'crearInventario', roles: ['administrador', 'recepcionista'] },
-  { operacion: 'editarInventario', roles: ['administrador', 'recepcionista'] },
-  { operacion: 'eliminarInventario', roles: ['administrador'] },
+  // ─── Empleados ───────────────────────────────────────────────────────────────
+  // buscarEmpleados también lo necesitan módulos de clínica para el selector FK
+  { operacion: 'listarEmpleados',          roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'verEmpleado',              roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'verEmpleadoPorPersonaId',  roles: ['administrador', 'director', 'contador', 'recepcionista', 'fisioterapeuta'] },
+  { operacion: 'buscarEmpleados',          roles: ['administrador', 'director', 'contador', 'recepcionista', 'fisioterapeuta'] },
+  { operacion: 'crearEmpleados',           roles: ['administrador'] },
+  { operacion: 'editarEmpleado',           roles: ['administrador'] },
+  { operacion: 'eliminarEmpleado',         roles: ['administrador'] },
 
-  // --- Pagos ---
-  { operacion: 'listarPagos', roles: ['administrador', 'director', 'contador', 'recepcionista'] },
-  { operacion: 'verPago', roles: ['administrador', 'director', 'contador', 'recepcionista'] },
-  { operacion: 'crearPago', roles: ['administrador', 'recepcionista', 'contador'] },
-  { operacion: 'editarPago', roles: ['administrador', 'contador'] },
-  { operacion: 'eliminarPago', roles: ['administrador'] },
+  // ─── Turnos ──────────────────────────────────────────────────────────────────
+  { operacion: 'listarTurnos',            roles: ['administrador', 'director'] },
+  { operacion: 'verTurno',                roles: ['administrador', 'director'] },
+  { operacion: 'listarTurnosPorEmpleado', roles: ['administrador', 'director', 'fisioterapeuta'] },
+  { operacion: 'crearTurnos',             roles: ['administrador'] },
+  { operacion: 'editarTurno',             roles: ['administrador'] },
+  { operacion: 'eliminarTurno',           roles: ['administrador'] },
 
-  // --- Facturas ---
-  { operacion: 'listarFacturas', roles: ['administrador', 'director', 'contador', 'recepcionista'] },
-  { operacion: 'verFactura', roles: ['administrador', 'director', 'contador', 'recepcionista'] },
-  { operacion: 'crearFactura', roles: ['administrador', 'recepcionista', 'contador'] },
-  { operacion: 'editarFactura', roles: ['administrador', 'contador'] },
-  { operacion: 'eliminarFactura', roles: ['administrador'] },
+  // ─── Asistencias ─────────────────────────────────────────────────────────────
+  { operacion: 'listarAsistencias',             roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'verAsistencia',                 roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'listarAsistenciasPorEmpleado',  roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'crearAsistencias',              roles: ['administrador', 'recepcionista'] },
+  { operacion: 'editarAsistencia',              roles: ['administrador', 'recepcionista'] },
+  { operacion: 'eliminarAsistencia',            roles: ['administrador'] },
+
+  // ─── Insumos (Inventario) ────────────────────────────────────────────────────
+  { operacion: 'listarInsumos',             roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta'] },
+  { operacion: 'verInsumo',                 roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta'] },
+  { operacion: 'listarInsumosConStockBajo', roles: ['administrador', 'director', 'recepcionista'] },
+  { operacion: 'crearInsumos',              roles: ['administrador', 'recepcionista'] },
+  { operacion: 'editarInsumo',              roles: ['administrador', 'recepcionista'] },
+  { operacion: 'eliminarInsumo',            roles: ['administrador'] },
+
+  // ─── Movimientos de Insumos ──────────────────────────────────────────────────
+  { operacion: 'listarMovimientosInsumos',    roles: ['administrador', 'director', 'recepcionista'] },
+  { operacion: 'verMovimientoInsumo',         roles: ['administrador', 'director', 'recepcionista'] },
+  { operacion: 'listarMovimientosPorInsumo',  roles: ['administrador', 'director', 'recepcionista'] },
+  { operacion: 'crearMovimientosInsumos',     roles: ['administrador', 'recepcionista'] },
+  { operacion: 'eliminarMovimientoInsumo',    roles: ['administrador'] },
+
+  // ─── Documentos ──────────────────────────────────────────────────────────────
+  { operacion: 'listarDocumentos',              roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'verDocumento',                  roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'listarDocumentosPorEntidad',    roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'crearDocumentos',               roles: ['administrador'] },
+  { operacion: 'editarDocumento',               roles: ['administrador'] },
+  { operacion: 'eliminarDocumento',             roles: ['administrador'] },
+  { operacion: 'firmarDocumentoConBlockchain',  roles: ['administrador'] },
 ];
