@@ -52,6 +52,7 @@ export class GraphqlGatewayController {
     
     const clinicaUrl = this.configService.get<string>('CLINICA_GRAPHQL_URL') || 'http://localhost:3000/graphql';
     const admUrl = this.configService.get<string>('GESTION_ADMINISTRATIVA_URL') || 'http://localhost:3001/graphql';
+    const biUrl = this.configService.get<string>('BI_AUTOMATIZACION_GRAPHQL_URL') || 'http://localhost:8000/graphql/';
 
     // Obtener la operación raíz real de la query
     const operacionRaiz = this.obtenerNombreOperacion(queryStr);
@@ -84,6 +85,8 @@ export class GraphqlGatewayController {
       'listarMensualidades', 'listarMensualidadesEnriquecidas', 'verMensualidad',
       'listarMensualidadesPorPaciente', 'listarMensualidadesPorPlan', 'listarMensualidadesPendientes',
       'crearMensualidades', 'registrarPagoMensualidad',
+      // Reportes (BI Administrativo)
+      'reporteFinanciero',
       // Empleados extra
       'verEmpleadoPorPersonaId',
       
@@ -94,9 +97,20 @@ export class GraphqlGatewayController {
       'listarInventarios', 'verInventario', 'crearInventario', 'editarInventario', 'eliminarInventario'
     ];
 
-    // Si la operación raíz pertenece a administración, se enruta allá; de lo contrario va a clínica
-    const isAdministrative = admOperations.includes(operacionRaiz);
-    const targetUrl = isAdministrative ? admUrl : clinicaUrl;
+    const biOperations = [
+      'predecirTiempoRecuperacion',
+      'predecirRiesgoAbandono',
+      'dashboardKpis',
+      'registrarEvento'
+    ];
+
+    // Si la operación raíz pertenece a administración, se enruta allá; de lo contrario va a clínica o BI
+    let targetUrl = clinicaUrl;
+    if (biOperations.includes(operacionRaiz)) {
+      targetUrl = biUrl;
+    } else if (admOperations.includes(operacionRaiz)) {
+      targetUrl = admUrl;
+    }
 
     this.logger.log(`→ Proxy GraphQL hacia: ${targetUrl}`);
 

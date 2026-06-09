@@ -23,8 +23,10 @@ export class ProxyController {
   async proxyBi(@Req() req: Request, @Res() res: Response) {
     const biUrl = this.configService.get<string>('BI_AUTOMATIZACION_URL') || 'http://localhost:8000/api';
     
-    const subRoute = req.params.path || '';
-    const targetUrl = `${biUrl}/${subRoute}`;
+    // Si la URL del Gateway tiene el prefijo global /api/, lo removemos para obtener la ruta relativa del recurso.
+    // Ej: /api/bi-automatizacion/kpis/dashboard/ -> bi-automatizacion/kpis/dashboard/
+    const subRoute = req.path.replace(/^\/?(api\/)?/, '');
+    const targetUrl = `${biUrl.replace(/\/$/, '')}/${subRoute}`;
 
     const headers: Record<string, string> = {
       'content-type': 'application/json',

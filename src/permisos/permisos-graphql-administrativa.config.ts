@@ -77,4 +77,7 @@ export const PERMISOS_GRAPHQL_ADMINISTRATIVA: PermisoGraphql[] = [
   { operacion: 'editarDocumento',               roles: ['administrador'] },
   { operacion: 'eliminarDocumento',             roles: ['administrador'] },
   { operacion: 'firmarDocumentoConBlockchain',  roles: ['administrador'] },
+
+  // ─── Reportes (BI Administrativo) ────────────────────────────────────────────
+  { operacion: 'reporteFinanciero',  roles: ['administrador', 'director', 'contador'] },
 ];

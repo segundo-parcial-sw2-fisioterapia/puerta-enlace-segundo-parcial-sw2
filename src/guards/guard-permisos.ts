@@ -10,6 +10,7 @@ import { RolSistema } from '../permisos/permisos.types';
 import { PERMISOS_GRAPHQL_CLINICA } from '../permisos/permisos-graphql-clinica.config';
 import { PERMISOS_GRAPHQL_ADMINISTRATIVA } from '../permisos/permisos-graphql-administrativa.config';
 import { PERMISOS_REST_BI } from '../permisos/permisos-rest-bi.config';
+import { PERMISOS_GRAPHQL_BI } from '../permisos/permisos-graphql-bi.config';
 
 interface UsuarioAutenticado {
   id: string;
@@ -65,6 +66,7 @@ export class GuardPermisos implements CanActivate {
     const permisosGraphql = [
       ...PERMISOS_GRAPHQL_CLINICA,
       ...PERMISOS_GRAPHQL_ADMINISTRATIVA,
+      ...PERMISOS_GRAPHQL_BI,
     ];
 
     const permiso = permisosGraphql.find((p) => p.operacion === operacionRaiz);
