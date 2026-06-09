@@ -5,5 +5,6 @@ export const PERMISOS_REST_BI: PermisoRest[] = [
   { metodo: 'GET', ruta: '/api/bi-automatizacion/kpis/*', roles: ['director', 'administrador'] },
   { metodo: 'GET', ruta: '/api/bi-automatizacion/reportes/*', roles: ['director', 'administrador', 'contador'] },
   { metodo: 'GET', ruta: '/api/bi-automatizacion/predicciones/*', roles: ['director', 'fisioterapeuta'] },
+  { metodo: 'GET', ruta: '/api/bi-automatizacion/logs/*', roles: ['director', 'administrador'] },
   { metodo: 'POST', ruta: '/api/bi-automatizacion/*', roles: ['director', 'administrador'] },
 ];

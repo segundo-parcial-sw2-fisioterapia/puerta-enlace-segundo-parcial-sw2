@@ -35,7 +35,7 @@ export const PERMISOS_GRAPHQL_CLINICA: PermisoGraphql[] = [
   { operacion: 'eliminarEjercicio', roles: ['administrador'] },
 
   // --- Evaluaciones Iniciales ---
-  { operacion: 'listarEvaluacionesIniciales', roles: ['administrador', 'fisioterapeuta', 'director'] },
+  { operacion: 'listarEvaluacionesIniciales', roles: ['administrador', 'fisioterapeuta', 'director', 'recepcionista'] },
   { operacion: 'verEvaluacionInicial', roles: ['administrador', 'fisioterapeuta'] },
   { operacion: 'listarEvaluacionesPorPaciente', roles: ['administrador', 'fisioterapeuta'] },
   { operacion: 'crearEvaluacionesIniciales', roles: ['fisioterapeuta', 'administrador', 'director'] },
