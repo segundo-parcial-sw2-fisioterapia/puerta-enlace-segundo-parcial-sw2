@@ -8,7 +8,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Instalar dependencias
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile --ignore-scripts
 
 # Copiar el código fuente y compilar
 COPY . .
@@ -24,7 +24,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Instalar solo dependencias de producción
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --prod --frozen-lockfile
+RUN pnpm install --prod --frozen-lockfile --ignore-scripts
 
 # Copiamos la compilación generada
 COPY --from=builder /app/dist ./dist

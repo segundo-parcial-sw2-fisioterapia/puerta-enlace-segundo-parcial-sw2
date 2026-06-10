@@ -1,0 +1,10 @@
+services:
+  puerta-enlace:
+    build: .
+    container_name: puerta-enlace-sw2
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    extra_hosts:
+      # Permite a la puerta de enlace comunicarse con los microservicios en el host
+      - "host.docker.internal:host-gateway"
