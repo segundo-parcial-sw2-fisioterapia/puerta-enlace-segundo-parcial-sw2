@@ -86,7 +86,8 @@ export class GraphqlGatewayController {
       'listarMensualidadesPorPaciente', 'listarMensualidadesPorPlan', 'listarMensualidadesPendientes',
       'crearMensualidades', 'registrarPagoMensualidad',
       // Reportes (BI Administrativo)
-      'reporteFinanciero',
+      'reporteFinanciero', 'catalogoReportes', 'reporteDinamico', 'reportePorPrompt',
+      'exportarReportePdf', 'exportarReporteExcel',
       // Empleados extra
       'verEmpleadoPorPersonaId',
       

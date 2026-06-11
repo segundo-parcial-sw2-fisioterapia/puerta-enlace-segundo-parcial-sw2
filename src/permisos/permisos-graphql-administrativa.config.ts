@@ -30,13 +30,13 @@ export const PERMISOS_GRAPHQL_ADMINISTRATIVA: PermisoGraphql[] = [
 
   // ─── Empleados ───────────────────────────────────────────────────────────────
   // buscarEmpleados también lo necesitan módulos de clínica para el selector FK
-  { operacion: 'listarEmpleados',          roles: ['administrador', 'director', 'contador'] },
-  { operacion: 'verEmpleado',              roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'listarEmpleados',          roles: ['administrador', 'director', 'contador', 'fisioterapeuta'] },
+  { operacion: 'verEmpleado',              roles: ['administrador', 'director', 'contador', 'fisioterapeuta'] },
   { operacion: 'verEmpleadoPorPersonaId',  roles: ['administrador', 'director', 'contador', 'recepcionista', 'fisioterapeuta'] },
   { operacion: 'buscarEmpleados',          roles: ['administrador', 'director', 'contador', 'recepcionista', 'fisioterapeuta'] },
-  { operacion: 'crearEmpleados',           roles: ['administrador'] },
-  { operacion: 'editarEmpleado',           roles: ['administrador'] },
-  { operacion: 'eliminarEmpleado',         roles: ['administrador'] },
+  { operacion: 'crearEmpleados',           roles: ['administrador', 'fisioterapeuta'] },
+  { operacion: 'editarEmpleado',           roles: ['administrador', 'fisioterapeuta'] },
+  { operacion: 'eliminarEmpleado',         roles: ['administrador', 'fisioterapeuta'] },
 
   // ─── Turnos ──────────────────────────────────────────────────────────────────
   { operacion: 'listarTurnos',            roles: ['administrador', 'director'] },
@@ -47,12 +47,12 @@ export const PERMISOS_GRAPHQL_ADMINISTRATIVA: PermisoGraphql[] = [
   { operacion: 'eliminarTurno',           roles: ['administrador'] },
 
   // ─── Asistencias ─────────────────────────────────────────────────────────────
-  { operacion: 'listarAsistencias',             roles: ['administrador', 'director', 'contador'] },
-  { operacion: 'verAsistencia',                 roles: ['administrador', 'director', 'contador'] },
-  { operacion: 'listarAsistenciasPorEmpleado',  roles: ['administrador', 'director', 'contador'] },
-  { operacion: 'crearAsistencias',              roles: ['administrador', 'recepcionista'] },
-  { operacion: 'editarAsistencia',              roles: ['administrador', 'recepcionista'] },
-  { operacion: 'eliminarAsistencia',            roles: ['administrador'] },
+  { operacion: 'listarAsistencias',             roles: ['administrador', 'director', 'contador', 'fisioterapeuta'] },
+  { operacion: 'verAsistencia',                 roles: ['administrador', 'director', 'contador', 'fisioterapeuta'] },
+  { operacion: 'listarAsistenciasPorEmpleado',  roles: ['administrador', 'director', 'contador', 'fisioterapeuta'] },
+  { operacion: 'crearAsistencias',              roles: ['administrador', 'recepcionista', 'fisioterapeuta'] },
+  { operacion: 'editarAsistencia',              roles: ['administrador', 'recepcionista', 'fisioterapeuta'] },
+  { operacion: 'eliminarAsistencia',            roles: ['administrador', 'fisioterapeuta'] },
 
   // ─── Insumos (Inventario) ────────────────────────────────────────────────────
   { operacion: 'listarInsumos',             roles: ['administrador', 'director', 'recepcionista', 'fisioterapeuta'] },
@@ -79,5 +79,10 @@ export const PERMISOS_GRAPHQL_ADMINISTRATIVA: PermisoGraphql[] = [
   { operacion: 'firmarDocumentoConBlockchain',  roles: ['administrador'] },
 
   // ─── Reportes (BI Administrativo) ────────────────────────────────────────────
-  { operacion: 'reporteFinanciero',  roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'reporteFinanciero',    roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'catalogoReportes',     roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'reporteDinamico',      roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'reportePorPrompt',     roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'exportarReportePdf',   roles: ['administrador', 'director', 'contador'] },
+  { operacion: 'exportarReporteExcel', roles: ['administrador', 'director', 'contador'] },
 ];
